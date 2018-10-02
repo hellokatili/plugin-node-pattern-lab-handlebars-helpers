@@ -1,11 +1,8 @@
 'use strict';
 
-const pluginName = 'plugin-node-handlebars-helpers';
+const pluginName = 'plugin-node-pattern-lab-handlebars-helpers';
 
-const fs = require('fs-extra'),
-  glob = require('glob'),
-  path = require('path'),
-  registerHelpers = require('./src/register-helpers');
+const registerHelpers = require('./src/register-helpers');
 
 function onPatternlabBuildGlobalDataEnd(patternlab) {
   if (patternlab.config.debug) {
@@ -31,7 +28,14 @@ function registerEvents(patternlab) {
  *
  */
 function getPluginFrontendConfig() {
-  return {}
+  return {
+    'name': pluginName,
+    'templates': [],
+    'stylesheets': [],
+    'javascripts': [],
+    'onready': '',
+    'callback': ''
+  }
 }
 
 /**
@@ -44,11 +48,9 @@ function pluginInit(patternlab) {
     process.exit(1);
   }
 
-  let fileTypes = require('./package.json').fileTypes;
-
   //write the plugin json to public/patternlab-components
   var pluginConfig = getPluginFrontendConfig();
-  var pluginConfigPathName = path.resolve(patternlab.config.paths.public.root, 'patternlab-components', 'packages');
+  // var pluginConfigPathName = path.resolve(patternlab.config.paths.public.root, 'patternlab-components', 'packages');
   try {
     // fs.outputFileSync(pluginConfigPathName + '/' + pluginName + '.json', JSON.stringify(pluginConfig, null, 2));
   } catch (ex) {
@@ -63,24 +65,24 @@ function pluginInit(patternlab) {
   patternlab.plugins.push(pluginConfig);
 
   //write the plugin dist folder to public/pattern-lab
-  var pluginFiles = glob.sync(__dirname + '/dist/**/*');
+  // var pluginFiles = glob.sync(__dirname + '/dist/**/*');
 
-  if (pluginFiles && pluginFiles.length > 0) {
-
-    for (let i = 0; i < pluginFiles.length; i++) {
-      try {
-        var fileStat = fs.statSync(pluginFiles[i]);
-        if (fileStat.isFile()) {
-          var relativePath = path.relative(__dirname, pluginFiles[i]).replace('dist', ''); //dist is dropped
-          var writePath = path.join(patternlab.config.paths.public.root, 'patternlab-components', 'pattern-lab', pluginName, relativePath);
-          fs.copySync(pluginFiles[i], writePath);
-        }
-      } catch (ex) {
-        console.trace(pluginName, ': Error occurred while copying pluginFile', pluginFiles[i]);
-        console.log(ex);
-      }
-    }
-  }
+  // if (pluginFiles && pluginFiles.length > 0) {
+  //
+  //   for (let i = 0; i < pluginFiles.length; i++) {
+  //     try {
+  //       var fileStat = fs.statSync(pluginFiles[i]);
+  //       if (fileStat.isFile()) {
+  //         var relativePath = path.relative(__dirname, pluginFiles[i]).replace('dist', ''); //dist is dropped
+  //         var writePath = path.join(patternlab.config.paths.public.root, 'patternlab-components', 'pattern-lab', pluginName, relativePath);
+  //         fs.copySync(pluginFiles[i], writePath);
+  //       }
+  //     } catch (ex) {
+  //       console.trace(pluginName, ': Error occurred while copying pluginFile', pluginFiles[i]);
+  //       console.log(ex);
+  //     }
+  //   }
+  // }
 
   //setup listeners if not already active. we also enable and set the plugin as initialized
   if (!patternlab.config.plugins) {

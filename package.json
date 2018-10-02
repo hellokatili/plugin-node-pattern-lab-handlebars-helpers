@@ -2,22 +2,23 @@
   "name": "plugin-node-pattern-lab-handlebars-helpers",
   "version": "1.0.0",
   "description": "Adds several Handlebars JS helper to Pattern Lab",
+  "author": {
+    "name": "Katrin Klimat"
+  },
+  "homepage": "https://github.com/hellokatili/plugin-node-pattern-lab-handlebars-helpers#readme",
+  "license": "MIT",
   "main": "index.js",
-  "scripts": {
-    "postinstall": "node ./postinstall.js"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "fs-extra": "^1.0.0",
-    "glob": "^7.1.1",
-    "handlebars": "^4.0.5"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hellokatili/plugin-node-pattern-lab-handlebars-helpers.git"
   },
   "bugs": {
     "url": "https://github.com/hellokatili/plugin-node-pattern-lab-handlebars-helpers/issues"
-  }
+  },
+  "scripts": {
+    "postinstall": "node ./postinstall.js"
+  },
+  "dependencies": {},
+  "bundleDependencies": false,
+  "deprecated": false
 }
