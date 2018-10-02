@@ -50,6 +50,9 @@ Temporary Items
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
+.idea/*.xml
+.idea/sonarlint/*
+*.iml
 
 # Sensitive or high-churn files
 .idea/**/dataSources/
@@ -200,3 +203,8 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+.idea/misc.xml
+.idea/modules.xml
+.idea/sonarlint/
+.idea/vcs.xml
+plugin-node-pattern-lab-handlebars-helpers.iml
