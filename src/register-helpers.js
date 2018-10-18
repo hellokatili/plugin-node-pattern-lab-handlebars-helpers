@@ -23,6 +23,19 @@ function registerHelpers(patternlab, Handlebars) {
     }
     return console.error('Error: Expression "' + operator + '" not found');
   });
+
+  Handlebars.registerHelper("math", function(lvalue, operator, rvalue, options) {
+    lvalue = parseFloat(lvalue);
+    rvalue = parseFloat(rvalue);
+
+    return {
+      "+": lvalue + rvalue,
+      "-": lvalue - rvalue,
+      "*": lvalue * rvalue,
+      "/": lvalue / rvalue,
+      "%": lvalue % rvalue
+    }[operator];
+  });
 }
 
 module.exports = registerHelpers;
