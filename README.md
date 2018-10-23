@@ -1,4 +1,4 @@
-# Handlerbar.js helpers for Pattern Lab
+# Handlerbars.js helpers for Pattern Lab
 
 Registers additional Handlebars helper in Pattern Lab Node version.
 
