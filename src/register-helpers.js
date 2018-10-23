@@ -13,7 +13,8 @@ function registerHelpers(patternlab, Handlebars) {
       '<': v1 < v2 ? true : false,
       '<=': v1 <= v2 ? true : false,
       '||': v1 || v2 ? true : false,
-      '&&': v1 && v2 ? true : false
+      '&&': v1 && v2 ? true : false,
+      'typeof': typeof v1 == v2 ? true : false
     };
     if (operators.hasOwnProperty(operator)) {
       if (operators[operator]) {

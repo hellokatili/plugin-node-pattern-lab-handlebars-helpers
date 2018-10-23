@@ -1,6 +1,6 @@
 {
   "name": "plugin-node-pattern-lab-handlebars-helpers",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Adds several Handlebars JS helper to Pattern Lab",
   "author": {
     "name": "Katrin Klimat"
