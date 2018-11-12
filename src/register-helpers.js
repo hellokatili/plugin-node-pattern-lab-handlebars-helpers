@@ -40,9 +40,9 @@ function registerHelpers(patternlab, Handlebars) {
 
   Handlebars.registerHelper("concat", function() {
     var string = '';
-    for(var arg in args){
-      if(typeof args[arg] !== 'object'){
-        string += args[arg];
+    for(var arg in arguments){
+      if(typeof arguments[arg] !== 'object'){
+        string += arguments[arg];
       }
     }
     return string;
