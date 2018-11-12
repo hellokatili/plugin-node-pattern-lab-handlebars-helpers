@@ -37,6 +37,16 @@ function registerHelpers(patternlab, Handlebars) {
       "%": lvalue % rvalue
     }[operator];
   });
+
+  Handlebars.registerHelper("concat", function() {
+    var string = '';
+    for(var arg in args){
+      if(typeof args[arg] !== 'object'){
+        string += args[arg];
+      }
+    }
+    return string;
+  });
 }
 
 module.exports = registerHelpers;
